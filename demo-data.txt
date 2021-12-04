@@ -1,0 +1,219 @@
+—————————————— a) LOADING SCHEMA AND DATA ———————————————
+csc343h-townse46=> \i schema.ddl;
+psql:schema.ddl:1: NOTICE:  drop cascades to 8 other objects
+DETAIL:  drop cascades to type schema.percentage
+drop cascades to type schema.resource
+drop cascades to table schema.electricityaccessibility
+drop cascades to table schema.levelofdevelopment
+drop cascades to table schema.electricitybysource
+drop cascades to table schema.abundanceofresource
+drop cascades to table schema.avgcostofproduction
+drop cascades to view schema.mostpopularpercountry
+DROP SCHEMA
+CREATE SCHEMA
+SET
+CREATE DOMAIN
+CREATE DOMAIN
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+csc343h-townse46-> \COPY ElectricityAccessibility FROM electricity_accessibility.csv WITH csv;
+COPY 55
+csc343h-townse46-> \COPY ElectricityBySource FROM coal_electricity_data.csv WITH csv;
+COPY 29
+csc343h-townse46-> \COPY ElectricityBySource FROM oil_electricity_data.csv WITH csv;
+COPY 30
+csc343h-townse46-> \COPY ElectricityBySource FROM renewable_electricity_data.csv WITH csv;
+COPY 29
+csc343h-townse46-> \COPY AbundanceOfResource FROM coal_abundance_data.csv WITH csv;
+COPY 20
+csc343h-townse46-> \COPY AbundanceOfResource FROM oil_abundance_data.csv WITH csv;
+COPY 9
+csc343h-townse46-> \COPY AbundanceOfResource FROM sunlight_abundance_data.csv WITH csv;
+COPY 5
+csc343h-townse46-> \COPY AbundanceOfResource FROM wind_abundance_data.csv WITH csv;
+COPY 55
+csc343h-townse46-> \COPY LevelOfDevelopment FROM GDP_HDI_data.csv WITH csv;
+COPY 48
+csc343h-townse46-> \COPY AvgCostOfProduction FROM production_costs_data.csv WITH csv;
+COPY 4
+
+
+
+——————————————— b) RUN \d ON EACH TABLE ———————————————
+csc343h-townse46=> \d ElectricityAccessibility;
+                  Table "schema.electricityaccessibility"
+            Column            |    Type    | Collation | Nullable | Default 
+------------------------------+------------+-----------+----------+---------
+ country                      | text       |           | not null | 
+ electricitypercentageoverall | percentage |           |          | 
+Indexes:
+    "electricityaccessibility_pkey" PRIMARY KEY, btree (country)
+Referenced by:
+    TABLE "abundanceofresource" CONSTRAINT "abundanceofresource_country_fkey" FOREIGN KEY (country) REFERENCES electricityaccessibility(country)
+    TABLE "electricitybysource" CONSTRAINT "electricitybysource_country_fkey" FOREIGN KEY (country) REFERENCES electricityaccessibility(country)
+    TABLE "levelofdevelopment" CONSTRAINT "levelofdevelopment_country_fkey" FOREIGN KEY (country) REFERENCES electricityaccessibility(country)
+
+csc343h-townse46=> \d ElectricityBySource;
+                 Table "schema.electricitybysource"
+        Column         |    Type    | Collation | Nullable | Default 
+-----------------------+------------+-----------+----------+---------
+ country               | text       |           | not null | 
+ resourcetype          | resource   |           | not null | 
+ electricitypercentage | percentage |           |          | 
+Indexes:
+    "electricitybysource_pkey" PRIMARY KEY, btree (country, resourcetype)
+Foreign-key constraints:
+    "electricitybysource_country_fkey" FOREIGN KEY (country) REFERENCES electricityaccessibility(country)
+
+csc343h-townse46=> \d AbundanceOfResource;
+                  Table "schema.abundanceofresource"
+      Column       |       Type       | Collation | Nullable | Default 
+-------------------+------------------+-----------+----------+---------
+ country           | text             |           | not null | 
+ resourcetype      | resource         |           | not null | 
+ resourceabundance | double precision |           |          | 
+Indexes:
+    "abundanceofresource_pkey" PRIMARY KEY, btree (country, resourcetype)
+Check constraints:
+    "abundanceofresource_resourceabundance_check" CHECK (resourceabundance >= 0.0::double precision)
+Foreign-key constraints:
+    "abundanceofresource_country_fkey" FOREIGN KEY (country) REFERENCES electricityaccessibility(country)
+
+csc343h-townse46=> \d LevelOfDevelopment;
+               Table "schema.levelofdevelopment"
+  Column   |       Type       | Collation | Nullable | Default 
+-----------+------------------+-----------+----------+---------
+ country   | text             |           | not null | 
+ gdpgrowth | double precision |           | not null | 
+ hdigrowth | double precision |           | not null | 
+Indexes:
+    "levelofdevelopment_pkey" PRIMARY KEY, btree (country)
+Foreign-key constraints:
+    "levelofdevelopment_country_fkey" FOREIGN KEY (country) REFERENCES electricityaccessibility(country)
+
+csc343h-townse46=> \d AvgCostOfProduction;
+                Table "schema.avgcostofproduction"
+    Column    |       Type       | Collation | Nullable | Default 
+--------------+------------------+-----------+----------+---------
+ resourcetype | resource         |           | not null | 
+ cost         | double precision |           | not null | 
+Indexes:
+    "avgcostofproduction_pkey" PRIMARY KEY, btree (resourcetype)
+Check constraints:
+    "avgcostofproduction_cost_check" CHECK (cost >= 0.0::double precision)
+
+
+
+—————————— c) RUN SELECT COUNT(*) ON EACH TABLE————————————
+csc343h-townse46=> SELECT count(*) FROM ElectricityAccessibility;
+ count 
+-------
+    55
+(1 row)
+
+csc343h-townse46=> SELECT count(*) FROM ElectricityBySource;
+ count 
+-------
+    88
+(1 row)
+
+csc343h-townse46=> SELECT count(*) FROM AbundanceOfResource;
+ count 
+-------
+    89
+(1 row)
+
+csc343h-townse46=> SELECT count(*) FROM LevelOfDevelopment;
+ count 
+-------
+    48
+(1 row)
+
+csc343h-townse46=> SELECT count(*) FROM AvgCostOfProduction;
+ count 
+-------
+     4
+(1 row)
+
+
+
+——————————— d) SOME ROWS FROM EACH TABLE ———————————————
+csc343h-townse46=> SELECT *
+csc343h-townse46-> FROM ElectricityAccessibility
+csc343h-townse46-> WHERE electricityPercentageOverall > 80.0;
+         country             | electricitypercentageoverall 
+-----------------------------+------------------------------
+ Bhutan                      |                   95.44389343
+ Kiribati                    |                   90.55818141
+ Lao PDR                     |                          89.7
+ Nepal                       |                   83.52746582
+ Tuvalu                      |                    98.9172821
+ Canada                      |                           100
+ Japan                       |                           100
+ Australia                   |                           100
+ New Zealand                 |                           100
+ United States of America    |                           100
+ Italy                       |                           100
+ Iceland                     |                           100
+ Slovakia                    |                           100
+ Netherlands                 |                           100
+ Ireland                     |                           100
+ Greece                      |                           100
+(16 rows)
+
+csc343h-townse46=> SELECT * 
+csc343h-townse46-> FROM ElectricityBySource
+csc343h-townse46-> WHERE country = 'Congo';
+
+ country | resourcetype | electricitypercentage 
+---------+--------------+-----------------------
+ Congo   | coal         |                     0
+ Congo   | oil          |     0.134198165958399
+ Congo   | renewable    |     0.111831804965332
+(3 rows)
+
+csc343h-townse46=> SELECT *
+csc343h-townse46-> FROM AbundanceOfResource
+csc343h-townse46-> WHERE country = 'Yemen';
+
+ country | resourceType| resourceabundance 
+---------+-------------+-------------------
+ Yemen   | oil         |                  3
+ Yemen   | wind        |                5.5
+(2 rows)
+
+csc343h-townse46=> SELECT * 
+csc343h-townse46-> FROM LevelOfDevelopment 
+csc343h-townse46-> WHERE GDPGrowth > 80.0;
+
+   country   |  gdpgrowth  | hdigrowth 
+-------------+-------------+-----------
+ Afghanistan | 115.6094918 |    19.617
+ Angola      | 85.67893613 |    24.348
+ Bangladesh  | 82.42357333 |    15.759
+ Bhutan      |  107.386661 |    20.789
+ Congo       | 90.31316209 |    21.785
+ Ethiopia    | 172.4804987 |    30.141
+ Lao PDR     | 113.9710025 |    16.797
+ Liberia     | 81.21057467 |    10.417
+ Myanmar     | 140.2686558 |    20.824
+ Mozambique  | 102.8420037 |    20.278
+ Rwanda      | 111.5530545 |    27.361
+ Tanzania    | 83.19074995 |     17.62
+ Uganda      | 91.62714083 |    18.243
+ Zambia      | 95.18533838 |    20.807
+(14 rows)
+
+csc343h-townse46=> SELECT *
+csc343h-townse46-> FROM AvgCostOfProduction;
+
+ resourceType|    cost    
+-------------+--------
+ coal        |   0.0049
+ oil         |    0.013
+ solar       |     0.16
+ wind        |    0.053
+(4 rows)

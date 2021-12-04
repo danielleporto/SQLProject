@@ -1,0 +1,426 @@
+﻿-- Importing a file such as this will let you quickly create a demo to 
+hand
+-- in. You may edit this to customize it.  For instance, you may have your
+-- data in a csv file and need a different command to load it in, you
+-- may differently named files, or you may have your queries split into 
+more
+-- files than expected here.
+--
+\echo -------------------- Loading schema and data: --------------------
+\echo
+\i schema.ddl;
+\i import_data.sql;
+
+
+
+
+\echo
+\echo  -------------------- Investigative Question 1: ------------------
+\echo
+\i queries_1.sql;
+        country                      | electricitypercentage  |     gdpgrowth               | hdigrowth 
+——————————-+——-——-————+—————————+—————
+ Australia                          |                              100 |               31.76458825 |     3.532
+ Greece                              |                             100 |              -19.90176242 |     2.814
+ Ireland                              |                             100 |                41.94063175 |     3.429
+ Netherlands                      |                             100 |                11.15758805 |     4.125
+ Slovakia                           |                             100 |                44.22046108 |     6.784
+ Canada                             |                             100 |                25.14696819 |      3.02
+ New Zealand                   |                              100 |                22.84279827 |      2.79
+ Iceland                             |                              100 |                20.84432537 |     4.241
+ Japan                                |                             100 |                 51.03447791 |     3.771
+ Italy                                  |                             100 |                -4.735533496 |     1.965
+ United States of America |                             100 |                 16.89629046 |     2.333
+ Bhutan                              |              95.44389343 |         107.38666096887 |    20.789
+ Kiribati                             |              90.55818141 |       21.2125556962043 |     6.112
+ Lao PDR                          |                            89.7 |       113.971002489626 |    16.797
+ Nepal                                |             83.52746582 |        53.1663363558325 |    20.954
+ Bangladesh                       |             74.44007874 |        82.4235733256194 |    15.759
+ Comoros                           |             74.37182617 |        33.6011562996961 |    11.452
+ Afghanistan                      |                           71.5 |        115.609491765823 |    19.617
+ Yemen                              |             67.39666748 |       -16.7681139238074 |         0
+ Timor-Leste                      |             67.28153394 |        74.4619689404232 |    13.594
+ Sao Tome and Principe     |             67.26376343 |        66.4151858814432 |    13.321
+ Senegal                              |                           60.5 |        41.3718332444878 |     16.59
+ Myanmar                           |                           60.5 |        140.268655801698 |    20.824
+Solomon Islands                 |                           55.1 |        52.2705314009662 |    10.609
+ Sudan                                 |             46.92499542 |        69.1990791453642 |    15.332
+ Togo                                  |              44.74192047 |                              59.26 |    13.927
+ Angola                               |                               42 |        85.6789361268404 |    24.348
+ Haiti                                   |              40.75870895 |        30.1499139064884 |     9.492
+ Mauritania                          |                            39.5 |        47.9165999961981 |    10.288
+ Mali                                    |                            37.6 |        49.1089434362481 |    13.624
+ Guinea                                |                33.9978981 |        46.0256220031748 |    19.321
+ Lesotho                               |              31.78407669 |        41.4746812097771 |    15.367
+ Zambia                               |                            31.1 |         95.1853383813996 |    20.807
+ Benin                                  |                          29.62 |         51.1918278256339 |    15.904
+ Ethiopia                              |                               29 |         172.480498675888 |    30.141
+ Tanzania                             |              26.34278107 |         83.1907499476859 |     17.62
+ Mozambique                       |                               24 |         102.842003701578 |    20.278
+ Rwanda                               |                            22.8 |         111.553054516261 |    27.361
+ Madagascar                         |                20.5437088 |           31.050905878314 |     7.407
+ Guinea-Bissau                     |              20.14110756 |         38.5871009576242 |    15.136
+ Sierra Leone                        |              19.52425957 |         58.3542357118349 |    21.751
+ Uganda                                |                            18.5 |         91.6271408348979 |    18.243
+ Niger                                   |                            16.6 |         72.8830962901954 |    26.531
+ Congo                                  |              16.43629265 |         90.3131620907344 |    21.785
+ Burkina Faso                       |              16.07070351 |         70.1290190900998 |    27.108
+ Liberia                                 |              15.52771091 |         81.2105746743905 |    10.417
+ Malawi                                 |                            10.8 |                               74.63 |     27.52
+Burundi                                 |              8.403089523 |         42.5301466177362 |    29.674
+
+
+
+
+         country                    | electricitypercentage |     gdpgrowth     
+——————————+———————-—-+—————————
+Ethiopia                           |                                29 |  172.480498675888
+ Myanmar                        |                             60.5 |  140.268655801698
+ Afghanistan                    |                             71.5 |  115.609491765823
+ Lao PDR                         |                             89.7 |  113.971002489626
+ Rwanda                           |                             22.8 |  111.553054516261
+ Bhutan                             |               95.44389343 |   107.38666096887
+ Mozambique                   |                                24 |  102.842003701578
+ Zambia                            |                             31.1 |  95.1853383813996
+ Uganda                            |                             18.5 |  91.6271408348979
+ Congo                              |               16.43629265 |  90.3131620907344
+ Angola                             |                                42 |  85.6789361268404
+ Tanzania                          |               26.34278107 |  83.1907499476859
+ Bangladesh                      |               74.44007874 |  82.4235733256194
+ Liberia                             |               15.52771091 |  81.2105746743905
+ Malawi                             |                            10.8 |             74.63
+ Timor-Leste                     |              67.28153394 |  74.4619689404232
+ Niger                                |                            16.6 |  72.8830962901954
+ Burkina Faso                    |              16.07070351 |  70.1290190900998
+ Sudan                               |              46.92499542 |  69.1990791453642
+ Sao Tome and Principe    |              67.26376343 |  66.4151858814432
+ Togo                                 |              44.74192047 |             59.26
+ Sierra Leone                     |              19.52425957 |  58.3542357118349
+ Nepal                                |              83.52746582 |  53.1663363558325
+ Solomon Islands               |                            55.1 |  52.2705314009662
+ Benin                                |                           29.62 |  51.1918278256339
+ Japan                                 |                             100 |       51.03447791
+ Mali                                  |                             37.6 |  49.1089434362481
+ Mauritania                        |                             39.5 |  47.9165999961981
+ Guinea                              |                 33.9978981 |  46.0256220031748
+ Slovakia                            |                             100 |       44.22046108
+ Burundi                             |              8.403089523 |  42.5301466177362
+ Ireland                               |                             100 |       41.94063175
+ Lesotho                             |              31.78407669 |  41.4746812097771
+ Senegal                             |                            60.5 |  41.3718332444878
+ Guinea-Bissau                  |              20.14110756 |  38.5871009576242
+ Comoros                           |              74.37182617 |  33.6011562996961
+ Australia                           |                             100 |       31.76458825
+ Madagascar                       |                20.5437088 |   31.050905878314
+ Haiti                                  |              40.75870895 |  30.1499139064884
+ Canada                              |                             100 |       25.14696819
+ New Zealand                     |                             100 |       22.84279827
+ Kiribati                              |              90.55818141 |  21.2125556962043
+ Iceland                               |                             100 |       20.84432537
+ United States of America  |                             100 |       16.89629046
+ Netherlands                        |                             100 |       11.15758805
+ Italy                                    |                             100 |      -4.735533496
+ Yemen                                |              67.39666748 | -16.7681139238074
+ Greece                                |                             100 |      -19.90176242
+        country                      | electricitypercentage           | hdigrowth 
+——————————-+———————————+—————
+ Ethiopia                            |                                        29 |    30.141
+ Burundi                             |                      8.403089523 |    29.674
+ Malawi                              |                                    10.8 |     27.52
+ Rwanda                             |                                    22.8 |    27.361
+ Burkina Faso                     |                      16.07070351 |    27.108
+ Niger                                 |                                     16.6 |    26.531
+ Angola                              |                                        42 |    24.348
+ Congo                               |                       16.43629265 |    21.785
+ Sierra Leone                     |                       19.52425957 |    21.751
+ Nepal                                |                       83.52746582 |    20.954
+ Myanmar                          |                                     60.5 |    20.824
+ Zambia                             |                                     31.1 |    20.807
+ Bhutan                              |                       95.44389343 |    20.789
+ Mozambique                    |                                         24 |    20.278
+ Afghanistan                      |                                      71.5 |    19.617
+ Guinea                              |                          33.9978981 |    19.321
+ Uganda                             |                                      18.5 |    18.243
+ Tanzania                           |                        26.34278107 |     17.62
+ Lao PDR                          |                                       89.7 |    16.797
+ Senegal                             |                                      60.5 |     16.59
+ Benin                                |                                    29.62 |    15.904
+ Bangladesh                       |                        74.44007874 |    15.759
+ Lesotho                             |                        31.78407669 |    15.367
+ Sudan                                |                        46.92499542 |    15.332
+ Guinea-Bissau                  |                         20.14110756 |    15.136
+ Togo                                 |                         44.74192047 |    13.927
+ Mali                                  |                                       37.6 |    13.624
+ Timor-Leste                      |                         67.28153394 |    13.594
+ Sao Tome and Principe    |                          67.26376343 |    13.321
+ Comoros                           |                          74.37182617 |    11.452
+ Solomon Islands               |                                        55.1 |    10.609
+ Liberia                              |                           15.52771091 |    10.417
+Mauritania                         |                                         39.5 |    10.288
+ Haiti                                  |                           40.75870895 |     9.492
+ Madagascar                       |                             20.5437088 |     7.407
+ Slovakia                            |                                          100 |     6.784
+ Kiribati                              |                           90.55818141 |     6.112
+ Iceland                               |                                          100 |     4.241
+ Netherlands                       |                                           100 |     4.125
+ Japan                                 |                                           100 |     3.771
+ Australia                            |                                           100 |     3.532
+ Ireland                               |                                           100 |     3.429
+ Canada                               |                                           100 |      3.02
+ Greece                                |                                           100 |     2.814
+ New Zealand                      |                                           100 |      2.79
+ United States of America   |                                           100 |     2.333
+ Italy                                    |                                           100 |     1.965
+ Yemen                                |                            67.39666748 |         0
+\echo
+\echo  -------------------- Investigative Question 2: ------------------
+\echo
+\i queries_2.sql;
+resourcetype | totalelectricitypercentage 
+--------------+----------------------------
+ oil              |           755.755093185195
+ coal            |           316.730368349002
+ renewable  |           185.785951425133
+(3 rows)
+
+
+         country                    | resourcetype       | electricitypercentage 
+——————————+———————+———————————
+ Australia                          | coal                     |      62.8716168006469
+ Greece                              | coal                    |      42.6594882482343
+ Niger                                | coal                     |      41.6195856873823
+ Netherlands                      | coal                     |      38.6535840828564
+ United States of America | coal                     |      34.2327337278988
+ Japan                                | coal                            |      33.1527356254335
+ Ireland                              | coal                         |      17.3458130182569
+ Italy                                  | coal                     |      16.1200730212174
+ Slovakia                            | coal                     |      12.5112646440372
+ Canada                              | coal                     |      9.83644929480872
+ New Zealand                    | coal                     |      4.25291256645176
+ Myanmar                          | coal                     |      1.78459611772073
+ Bangladesh                       | coal                     |       1.6895155140567
+ Yemen                              | coal                     |                     0
+ Zambia                             | coal                      |                     0
+ Iceland                             | coal                      |                     0
+ Togo                                | coal                       |                     0
+ Benin                               | coal                       |                     0
+ Congo                              | coal                       |                     0
+ Eritrea                              | coal                       |                     0
+ Ethiopia                           | coal                        |                     0
+ Haiti                                 | coal                       |                     0
+ Mozambique                    | coal                       |                     0
+ Nepal                               | coal                        |                     0
+ Sudan                              | coal                         |                     0
+ Senegal                           | coal                         |                     0
+ South Sudan                   | coal                          |                     0
+ Angola                            | coal                          |                     0
+ Tanzania                         | coal                          |                     0
+(29 rows)
+
+
+CREATE VIEW
+CREATE VIEW
+ mostpopularresource 
+---------------------
+ oil
+ coal
+ renewable
+(3 rows)
+
+
+         country                   | mostpopularresource        |     gdpgrowth          | hdigrowth 
+——————————+——————————+————————+—————
+ Ethiopia                           | renewable                       |172.480498675888   |    30.141
+ Myanmar                         | coal                                 |  140.268655801698 |    20.824
+ Mozambique                    | oil                                   |  102.842003701578 |    20.278
+ Zambia                             | oil                                   |  95.1853383813996 |    20.807
+ Congo                               | oil                                   |  90.3131620907344 |    21.785
+ Angola                              | oil                                   |  85.6789361268404 |    24.348
+ Tanzania                           | oil                                   |  83.1907499476859 |     17.62
+ Bangladesh                       | oil                                   |  82.4235733256194 |    15.759
+ Niger                                 | oil                                   |  72.8830962901954 |    26.531
+ Sudan                                | oil                                   |  69.1990791453642 |    15.332
+ Togo                                  | oil                                   |                        59.26 |    13.927
+ Sierra Leone                      | oil                                   |  58.3542357118349 |    21.751
+ Nepal                                 | renewable                       |  53.1663363558325 |    20.954
+ Benin                                 | oil                                   |  51.1918278256339 |    15.904
+ Japan                                 | coal                                 |            51.03447791 |     3.771
+ Slovakia                            | coal                                 |           44.22046108  |     6.784
+ Ireland                               | renewable                       |           41.94063175  |     3.429
+ Senegal                              | oil                                   |  41.3718332444878 |     16.59
+ Australia                            | coal                                 |           31.76458825  |     3.532
+ Haiti                                  | oil                                    |  30.1499139064884 |     9.492
+ Canada                              | coal                                 |             25.14696819 |      3.02
+ New Zealand                    | renewable                        |             22.84279827 |      2.79
+ Iceland                              | renewable                        |             20.84432537 |     4.241
+ United States of America | coal                                  |             16.89629046 |     2.333
+ Netherlands                       | coal                                 |             11.15758805 |     4.125
+ Italy                                   | renewable                        |           -4.735533496 |     1.965
+ Yemen                               | oil                                    | -16.7681139238074 |         0
+ Greece                               | coal                                  |           -19.90176242 |     2.814
+\echo
+\echo  -------------------- Investigative Question 3: ------------------
+\echo
+\i queries_3.sql;
+        country                     | windabundance 
+——————————+———————
+ Iceland                            |            10
+ Mauritania                      |           8.5
+ Ireland                            |           8.5
+ New Zealand                  |           8.5
+ Djibouti                           |             8
+ Sudan                              |             8
+ Somalia                           |             8
+ Netherlands                     |             8
+ Australia                          |           7.2
+ Lesotho                            |           6.5
+ Niger                                |           6.5
+ United States of America |           6.2
+ Canada                              |             6
+ Mali                                  |             6
+ Eritrea                               |             6
+ Senegal                             |           5.5
+ Afghanistan                      |           5.5
+ Burkina Faso                    |           5.5
+ Japan                                 |           5.5
+ Yemen                               |           5.5
+ Haiti                                   |           5.2
+ Tuvalu                                |             5
+ Malawi                               |             5
+ Slovakia                             |             5
+ Kiribati                               |           4.7
+ Comoros                             |           4.6
+ Ethiopia                              |           4.5
+ Bangladesh                         |           4.5
+ Guinea-Bissau                    |           4.5
+ Togo                                   |           4.5
+ Tanzania                             |           4.5
+ Zambia                                |           4.5
+Mozambique                        |             4
+ South Sudan                        |             4
+ Timor-Leste                        |             4
+ Madagascar                         |             4
+ Greece                                 |             4
+ Italy                                     |             4
+ Lao PDR                             |             4
+ Cambodia                            |             4
+ Solomon Islands                  |             4
+ Guinea                                 |           3.7
+ Burundi                               |           3.7
+ Central African Republic.   |           3.7
+ Benin                                   |           3.6
+ Angola                                 |           3.6
+ Uganda                                 |           3.5
+ Sierra Leone                         |             3
+ Myanmar                              |             3
+ Sao Tome and Principe        |             3
+ Rwanda                                 |             3
+ Liberia                                   |             3
+ Bhutan                                   |           2.4
+ Congo                                    |           2.3
+ Nepal                                     |           2.2
+  
+      country                        | oilabundance 
+——————————-+———————
+ Yemen                             |            3
+ Angola                             |          9.5
+ Congo                               |          1.6
+ South Sudan                      |          3.5
+ Sudan                                |          1.5
+ Canada                              |        170.6
+ Australia                           |            4
+ United States of America |           50
+ Italy                                  |          0.5
+(9 rows)
+
+
+CREATE VIEW
+         country                      | mostpopularresource | oilabundance 
+————————-——-+—————-———+———————
+ Canada                              | coal                            |        170.6
+ United States of America | coal                            |           50
+ Angola                              | oil                              |          9.5
+ Australia                           | coal                            |            4
+ South Sudan                     | oil                               |          3.5
+ Yemen                              | oil                               |            3
+ Congo                               | oil                               |          1.6
+ Sudan                                | oil                               |          1.5
+ Italy                                   | renewable                   |          0.5
+(9 rows)
+
+
+CREATE VIEW
+         country                      | coalabundance 
+—————————-—-+———————
+ United States of America |  254197000000
+ Australia                           |  159634329600
+ New Zealand                    |    8349998250
+ Canada                              |    7255404420
+ Greece                               |    3170243560
+ Mozambique                     |    1975339520
+ Lao PDR                           |     554461930
+ Netherlands                       |     547848070
+ Japan                                 |     385808500
+ Bangladesh                        |     322976830
+ Slovakia                            |     148811850
+ Afghanistan                       |      72752460
+ Zambia                              |      49603950
+ Italy                                   |      18739270
+ Ireland                               |      15432340
+ Niger                                 |       6613860
+ Myanmar                          |       6613860
+ Central African Republic |       3306930
+ Malawi                             |       2204620
+ Nepal                                |       1102310
+(20 rows)
+
+
+         country                      |     oilabundance   |   coalabundance 
+————————-——-+———————+———————
+ Canada                              |                    170.6 |    7255404420
+ Australia                           |                            4 |  159634329600
+ United States of America |                          50 |  254197000000
+(3 rows)
+
+
+ resourcetype  |    cost  
+———-——-+————
+ coal                | 0.0049
+ oil                   |  0.013
+ wind               |  0.053
+ solar               |   0.16
+(4 rows)
+
+
+CREATE VIEW
+  country         | mostpopularresource   |    gdpgrowth     
+————-—-+—————————+—————————
+ Ethiopia         | renewable                    | 172.480498675888
+ Myanmar       | coal                              | 140.268655801698
+ Mozambique | oil                                 | 102.842003701578
+ Zambia          | oil                                 | 95.1853383813996
+ Congo            | oil                                 | 90.3131620907344
+(5 rows)
+
+
+CREATE VIEW
+         country                   | mostpopularresource  | windabundance 
+——————————+——————-—-—+———————
+ Iceland                            | renewable                   |            10
+ Ireland                             | renewable                  |           8.5
+ New Zealand                   | renewable                  |           8.5
+ Sudan                              | oil                               |             8
+ Netherlands                     | coal                             |             8
+ Australia                          | coal                            |           7.2
+ Niger                                | oil                              |           6.5
+ United States of America | coal                           |           6.2
+ Canada                              | coal                           |             6
+ Eritrea                               | oil                              |             6
+(10 rows)
+
+
+CREATE VIEW
+ country | mostpopularresource | sunlightabundance 
+———-+———————-—-+—————————
+ Sudan   | oil                               |            3559.6
+ Eritrea  | oil                               |              3361
