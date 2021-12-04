@@ -6,7 +6,7 @@ Note this project was for my Intro to Databases class at U of T (CSC343H1). I di
 
 All files used in this project were solely constructed by myself and Danielle Porto. 
 
-Explanation of files...
+**EXPLANATION OF FILES:**
 
 questions.pdf: investigative questions which we aim to answer via our database. 
 
@@ -24,3 +24,7 @@ queries_3.sql: set of queries aiming to answer investigative question 3.
 import_views.sql: set of views created that are used in queries_2.sql and queries_3.sql. 
 
 demo-queries.txt: contains an example interaction with the postgreSQL shell where we (1) load the schema and data successfully, then (2) run each query file and show its result. 
+
+**ABOUT THE DATA:**
+
+I have not uploaded the data yet. And may choose to later on. For now, the sample of the data used can be seen in demo-data.txt. 
