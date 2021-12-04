@@ -27,4 +27,4 @@ demo-queries.txt: contains an example interaction with the postgreSQL shell wher
 
 **ABOUT THE DATA:**
 
-I have not uploaded the data yet. And may choose to later on. For now, the sample of the data used can be seen in demo-data.txt. 
+I have not uploaded the data yet and may choose to later on. For now, the sample of the data used can be seen in demo-data.txt. 
