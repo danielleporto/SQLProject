@@ -1,10 +1,9 @@
 # SQLProject
-I have a particular interest in sustainable development. Thus, for my first SQL project I thought it would be fun to explore how renewable and nonrenewable resource accessibility &
-production costs impact specific society growth measures, such as gross domestic product, of countries. 
+While completing my Computer Science Program at the University of Toronto, I have also been completing a minor in Environmental Studies.  So, when my partner and I had the opportunity to complete a project that allowed us to analyze data, we decided our project should focus on energy production and the environment.
 
-Note this project was for my Intro to Databases class at U of T (CSC343H1). I did this project with Danielle Porto, who is assigned as a collaborator in this repository! 
+Note this project was for my Intro to Databases class at U of T (CSC343H1) in the fall semester of 2021. This project was completed with my partner, Olivia Townsend. 
 
-All files used in this project were solely constructed by myself and Danielle Porto. 
+All files used in this project were solely constructed by myself and Olivia Townsend. 
 
 **EXPLANATION OF FILES:**
 
